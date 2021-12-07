@@ -48,6 +48,7 @@ public class User {
                 try {
                     field.setAccessible(true);
                     map.put(field.getName(), field.get(this));
+                    field.setAccessible(false);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
