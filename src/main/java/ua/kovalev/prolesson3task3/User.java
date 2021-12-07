@@ -47,7 +47,7 @@ public class User {
             {
                 try {
                     field.setAccessible(true);
-                    map.put(field.getName(), field.get(this));
+                    map.put(field.getName(), String.valueOf(field.get(this)));
                     field.setAccessible(false);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -69,12 +69,8 @@ public class User {
             for(Field field : fields){
                 field.setAccessible(true);
                 if(map.get(field.getName()) != null){
-                    if (field.getType() == Integer.class){
-                        field.set(user, ((Double)map.get(field.getName())).intValue());
-                    }
-                    if (field.getType() == String.class){
-                        field.set(user, map.get(field.getName()));
-                    }
+                    Constructor <?> constructor = field.getType().getConstructor(String.class);
+                    field.set(user, constructor.newInstance(String.valueOf(map.get(field.getName()))));
                 }
                 field.setAccessible(false);
             }
