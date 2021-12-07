@@ -75,6 +75,7 @@ public class User {
                         field.set(user, map.get(field.getName()));
                     }
                 }
+                field.setAccessible(false);
             }
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
