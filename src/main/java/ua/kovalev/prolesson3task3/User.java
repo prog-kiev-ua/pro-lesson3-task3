@@ -70,7 +70,7 @@ public class User {
                 field.setAccessible(true);
                 if(map.get(field.getName()) != null){
                     Constructor <?> constructor = field.getType().getConstructor(String.class);
-                    field.set(user, constructor.newInstance(String.valueOf(map.get(field.getName()))));
+                    field.set(user, constructor.newInstance(map.get(field.getName())));
                 }
                 field.setAccessible(false);
             }
